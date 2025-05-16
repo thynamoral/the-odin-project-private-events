@@ -1,0 +1,21 @@
+
+<div>
+    <h2>
+        <%= event.title %>
+    </h2>
+    <p>
+        <%= event.description %>
+    </p>
+    <p>
+        <strong>Date:</strong> 
+        <%= event.date.strftime("%B %d, %Y") %>
+    </p>
+    <p>
+        <strong>Location:</strong> 
+        <%= event.location %>
+    </p>
+    <p>
+        <strong>Creator:</strong> 
+        <%= event.creator.email %>
+    </p>
+</div>

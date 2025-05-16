@@ -8,11 +8,25 @@ class EventsController < ApplicationController
   def show
   end
 
+  def new
+    @event = Event.new
+  end
+
+  def create
+    @event = Event.new(event_params)
+    @event.creator_id = 1 # Mocking creator_id for now
+    if @event.save
+      redirect_to events_path, notice: "Event was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])
     end
     def event_params
-      params.require(:event).permit(:title, :description, :date)
+      params.require(:event).permit(:title, :description, :date, :location, :creator_id)
     end
 end
