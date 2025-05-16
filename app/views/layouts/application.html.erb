@@ -18,16 +18,23 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p class="notice">
-        <%= notice %>
-      </p>
-    <% end %>
+    <header>
+      <nav>
+        <%# for sign in and sign out %>
+        <% if user_signed_in? %>
+        <%= current_user.email %>
+          <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete } %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path %>
+        <% end %>
+      </nav>
+    </header>
+    <hr>
 
-    <% if alert %>
-      <p class="alert">
-        <%= alert %>
-      </p>
+    <% flash.each do |name, message| %>
+      <div class="flash flash-<%= name %>">
+        <%= message %>
+      </div>
     <% end %>
 
     <%= yield %>

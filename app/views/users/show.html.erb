@@ -1,0 +1,27 @@
+<%# User details %>
+<h1><%= @user.email %></h1>
+
+<%# Upcoming events %>
+<h2>Upcoming Events</h2>
+<% if @user.upcoming_events.length > 0 %>
+    <ul>
+        <% @user.upcoming_events.each do |event| %>
+        <li>
+            <%= link_to "#{event.title} -#{event.date.strftime("%B %d, %Y, %T")}", event %>
+        </li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>No upcoming events.</p>
+<% end %>
+<%# Past events %>
+<h2>Past Events</h2>
+<% if @user.past_events.length > 0 %>
+    <ul>
+        <% @user.past_events.each do |event| %>
+        <li><%= event.title %> - <%= event.date %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>No past events.</p>
+<% end %>

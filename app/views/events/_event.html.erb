@@ -8,14 +8,14 @@
     </p>
     <p>
         <strong>Date:</strong> 
-        <%= event.date.strftime("%B %d, %Y") %>
+        <%= event.date.strftime("%B %d, %Y, %T") %>
     </p>
     <p>
         <strong>Location:</strong> 
         <%= event.location %>
     </p>
     <p>
-        <strong>Creator:</strong> 
-        <%= event.creator.email %>
+        <strong>Creator:</strong>
+        <%= link_to event.creator.email, user_path(event.creator.id) %>
     </p>
 </div>
